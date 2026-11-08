@@ -1,0 +1,13 @@
+{
+  "name": "Koffie-alarm",
+  "short_name": "Koffie-alarm",
+  "description": "Pushbericht zodra jouw koffie bij Albert Heijn of Jumbo in de aanbieding is.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f1ec",
+  "theme_color": "#6f4e37",
+  "lang": "nl",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

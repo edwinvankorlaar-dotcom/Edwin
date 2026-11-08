@@ -1,0 +1,11 @@
+services:
+  koffie-alarm:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      CHECK_INTERVAL_HOURS: "6"
+      # APP_PASSWORD: "kies-een-wachtwoord"   # aanraden als de app vanaf internet bereikbaar is

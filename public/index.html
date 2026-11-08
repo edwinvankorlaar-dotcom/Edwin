@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Koffie-alarm</title>
+  <meta name="theme-color" content="#6f4e37">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Koffie-alarm">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icon.svg">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>☕ Koffie-alarm</h1>
+    <p class="sub">Albert Heijn &amp; Jumbo aanbiedingen voor jouw lijstje</p>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="list" aria-selected="true">Mijn lijst</button>
+    <button role="tab" data-tab="search" aria-selected="false">Zoeken</button>
+    <button role="tab" data-tab="settings" aria-selected="false">Meldingen</button>
+  </nav>
+
+  <main>
+    <!-- Mijn lijst -->
+    <section id="tab-list" class="panel">
+      <div class="card status">
+        <div>
+          <strong id="last-check">Nog niet gecontroleerd</strong>
+          <span id="check-errors" class="muted"></span>
+        </div>
+        <button id="check-now" class="btn">Nu controleren</button>
+      </div>
+
+      <h2>Nu in de aanbieding</h2>
+      <div id="on-sale" class="products"></div>
+
+      <h2>Op je lijstje</h2>
+      <div id="watchlist"></div>
+    </section>
+
+    <!-- Zoeken -->
+    <section id="tab-search" class="panel" hidden>
+      <form id="search-form" class="card search">
+        <input id="q" type="search" placeholder="Zoek bv. Douwe Egberts bonen" value="koffie" autocomplete="off" required>
+        <select id="store">
+          <option value="all">Beide winkels</option>
+          <option value="ah">Albert Heijn</option>
+          <option value="jumbo">Jumbo</option>
+        </select>
+        <button class="btn" type="submit">Zoek</button>
+      </form>
+      <div id="keyword-hint" class="card hint" hidden>
+        <span>Elk product met „<strong id="keyword-text"></strong>” in de naam volgen?</span>
+        <button id="add-keyword" class="btn btn-outline">Volg zoekterm</button>
+      </div>
+      <div id="search-results"></div>
+    </section>
+
+    <!-- Meldingen -->
+    <section id="tab-settings" class="panel" hidden>
+      <div class="card">
+        <h2>Pushberichten op dit apparaat</h2>
+        <p class="muted">Werkt in Chrome, Edge en Firefox. Op iPhone/iPad: voeg deze pagina eerst toe aan je
+          beginscherm (Deel → Zet op beginscherm) en open hem vanaf daar.</p>
+        <p id="push-state" class="muted"></p>
+        <button id="push-toggle" class="btn">Pushberichten aanzetten</button>
+      </div>
+
+      <form id="ntfy-form" class="card">
+        <h2>Of via de ntfy-app</h2>
+        <p class="muted">Installeer de gratis app <a href="https://ntfy.sh" target="_blank" rel="noopener">ntfy</a>,
+          abonneer op een zelfbedachte, moeilijk te raden topicnaam en vul die hier in.</p>
+        <label>Topic <input id="ntfy-topic" placeholder="bv. koffie-edwin-8k2p" pattern="[A-Za-z0-9_\-]*"></label>
+        <label>Server <input id="ntfy-server" type="url" placeholder="https://ntfy.sh"></label>
+        <button class="btn" type="submit">Opslaan</button>
+      </form>
+
+      <div class="card">
+        <button id="test-push" class="btn btn-outline">Stuur testbericht</button>
+        <span id="test-result" class="muted"></span>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" role="status" hidden></div>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
